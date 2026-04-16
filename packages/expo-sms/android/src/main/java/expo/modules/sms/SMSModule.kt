@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.provider.Telephony
+import android.util.Log
 import androidx.core.os.bundleOf
 import expo.modules.core.interfaces.LifecycleEventListener
 import expo.modules.core.interfaces.services.UIManager
@@ -12,10 +13,16 @@ import expo.modules.kotlin.Promise
 import expo.modules.kotlin.exception.Exceptions
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
+import io.github.lukmccall.pika.isIntrospectable
 
 class SMSModule : Module(), LifecycleEventListener {
   private var pendingPromise: Promise? = null
   private var smsComposerOpened = false
+
+  init {
+    Log.e("dupa", "SMSModule created")
+    Log.e("dupa", "${isIntrospectable<SMSOptions>()}")
+  }
 
   private val context: Context
     get() = appContext.reactContext ?: throw Exceptions.ReactContextLost()

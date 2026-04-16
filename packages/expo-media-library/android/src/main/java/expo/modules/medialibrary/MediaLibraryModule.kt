@@ -19,6 +19,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
+import android.util.Log
 import androidx.annotation.RequiresApi
 import expo.modules.interfaces.permissions.Permissions.askForPermissionsWithPermissionsManager
 import expo.modules.interfaces.permissions.Permissions.getPermissionsWithPermissionsManager
@@ -46,6 +47,7 @@ import expo.modules.medialibrary.contracts.DeleteContract
 import expo.modules.medialibrary.contracts.DeleteContractInput
 import expo.modules.medialibrary.contracts.WriteContract
 import expo.modules.medialibrary.contracts.WriteContractInput
+import io.github.lukmccall.pika.isIntrospectable
 import java.lang.ref.WeakReference
 
 class MediaLibraryModule : Module() {
@@ -64,6 +66,10 @@ class MediaLibraryModule : Module() {
     } else {
       getManifestDeclaredPermissions(context, listOf(GranularPermission.PHOTO, GranularPermission.VIDEO, GranularPermission.AUDIO))
     }
+  }
+
+  init {
+    Log.e("dupa", "MEDIALIBRARY: ${isIntrospectable<AssetsOptions>()}")
   }
 
   override fun definition() = ModuleDefinition {

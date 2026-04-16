@@ -30,6 +30,7 @@ import expo.modules.kotlin.viewevent.EventDispatcher
 import expo.modules.kotlin.views.ComposableScope
 import expo.modules.kotlin.views.ComposeProps
 import expo.modules.kotlin.views.ExpoComposeView
+import expo.modules.kotlin.types.OptimizedRecord
 
 // region Records
 
@@ -38,6 +39,7 @@ enum class TextFieldVariant(val value: String) : Enumerable {
   OUTLINED("outlined"),
 }
 
+@OptimizedRecord
 data class TextFieldKeyboardOptionsRecord(
   @Field val capitalization: String? = null,
   @Field val autoCorrectEnabled: Boolean? = null,
@@ -45,6 +47,7 @@ data class TextFieldKeyboardOptionsRecord(
   @Field val imeAction: String? = null,
 ) : Record
 
+@OptimizedRecord
 data class TextFieldColorsRecord(
   // Text
   @Field val focusedTextColor: Color? = null,
